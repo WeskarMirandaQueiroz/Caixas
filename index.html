@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caixas – CRUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Caixas</h1>
+    <button id="btn-back" class="ghost hidden" title="Voltar">←</button>
+    <input id="search" placeholder="Buscar…">
+    <div id="current-path" class="path"></div>
+  <!-- <button id="btn-new-folder">+ Caixa</button> -->
+  <button id="btn-new-item">+ Conteúdo</button>
+  <button id="btn-export-excel" style="background:#e8f5e9;color:#2e7d32;border:1px solid #4caf50">📥 Baixar Excel</button>
+  <button id="btn-import-excel" style="background:#e3f2fd;color:#1565c0;border:1px solid #2196f3">📤 Importar Excel</button>
+  <input type="file" id="file-input" accept=".xlsx,.xls" style="display:none">
+  <!-- <button id="btn-restore" style="float:right;background:#ffe0e0;color:#a00;border:1px solid #a00">Restaurar Inicial</button> -->
+  </header>
+
+  <main>
+    <section id="list" class="card-grid"></section>
+    <section id="editor" class="hidden">
+      <h2 id="editor-title"></h2>
+      <input id="item-title" placeholder="Título">
+      <input id="search-items" placeholder="🔍 Buscar itens na lista...">
+      <div id="items-list"></div>
+      <div class="row">
+        <input id="new-item-name" placeholder="Discriminação (ex: Arroz)">
+        <input id="new-item-qty" placeholder="Quantidade (ex: 2kg)">
+        <button id="add-item">+ Adicionar</button>
+      </div>
+      <div class="row">
+        <button id="save-item">Salvar</button>
+        <button id="close-editor">Fechar</button>
+      </div>
+    </section>
+  </main>
+  
+  <!-- SheetJS Library -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
