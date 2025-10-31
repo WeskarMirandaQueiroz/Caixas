@@ -86,3 +86,42 @@ main{display:block;min-height:calc(100vh - 130px)}
 	#item-body { min-height: 40vh; }
 	.row { position: sticky; bottom: 0; background: #fff; padding-top: .5rem; }
 }
+
+/* Estilos para tela de acesso bloqueado */
+.access-denied {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-family: system-ui, -apple-system, sans-serif;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	text-align: center;
+}
+
+.access-denied h2 {
+	margin: 0 0 1rem 0;
+	font-size: 2rem;
+	font-weight: 300;
+}
+
+.access-denied p {
+	margin: 0 0 1.5rem 0;
+	opacity: 0.9;
+}
+
+.access-denied button {
+	background: rgba(255,255,255,0.2);
+	color: white;
+	border: 1px solid rgba(255,255,255,0.3);
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+}
+
+.access-denied button:hover {
+	background: rgba(255,255,255,0.3);
+	transform: translateY(-2px);
+}

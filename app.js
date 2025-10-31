@@ -69,13 +69,50 @@ function normalizeAllLevels() {
   state.nextBoxNumber = topCount + 1;
 }
 
+// Função para verificar senha de acesso
+function checkPassword() {
+  const correctPassword = "Begrateful";
+  let attempts = 0;
+  const maxAttempts = 3;
+  
+  while (attempts < maxAttempts) {
+    const password = prompt(`Digite a senha para acessar o sistema:\n(Tentativa ${attempts + 1} de ${maxAttempts})`);
+    
+    if (password === null) {
+      // Usuário cancelou
+      alert("Acesso negado. A página será bloqueada.");
+      document.body.innerHTML = '<div class="access-denied"><div><h2>🔒 Acesso Negado</h2><p>Senha necessária para acessar o sistema.</p><button onclick="location.reload()">Tentar Novamente</button></div></div>';
+      return false;
+    }
+    
+    if (password === correctPassword) {
+      return true;
+    }
+    
+    attempts++;
+    if (attempts < maxAttempts) {
+      alert(`Senha incorreta. Você tem mais ${maxAttempts - attempts} tentativa(s).`);
+    }
+  }
+  
+  // Esgotou as tentativas
+  alert("Número máximo de tentativas excedido. Acesso negado.");
+  document.body.innerHTML = '<div class="access-denied"><div><h2>🔒 Acesso Bloqueado</h2><p>Muitas tentativas incorretas.</p><button onclick="location.reload()">Reiniciar</button></div></div>';
+  return false;
+}
+
 async function bootstrap() {
+  // Verifica senha antes de inicializar a aplicação
+  if (!checkPassword()) {
+    return; // Bloqueia a inicialização se a senha estiver incorreta
+  }
+  
   const existing = localStorage.getItem(LS_KEY);
   if (existing) {
     state.tree = JSON.parse(existing);
   } else {
     const resp = await fetch('conteudos_iniciais.json').then(r => r.json()).catch(()=>null);
-    if (resp && resp.tree) state.tree = resp.tree;
+    if (resp && resp.tree) /* Line 78 omitted */
     save();
   }
 
